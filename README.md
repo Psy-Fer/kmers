@@ -40,3 +40,37 @@ alphabet = (ATCG) = 4
 4^5=1024
 4^6=4096
 
+
+# splitting a sequence for multithreading
+
+Sequence length should be significant, say 1000 or more
+
+CATCGATGCTAGC
+
+To get all kmers without overlap or missing anything, split the sequence with an overlap of kmer-1
+
+So for k=3
+
+CATCGATGCTAGC
+CATCGA
+CAT
+ ATC
+  TCG
+   CGA
+    GATGCTAGC
+    GAT
+     ATG
+      TGC
+       GCT
+        CTA
+         TAG
+          AGC
+
+# merging multithreaded KmerData
+
+vectors can be pre-allocated with capacity using the local sequence length still, but move scoring to the end
+if each sequence comes with the break position (end pos of last seq -2)
+Then record positions as normal
+then during the merge, just append them all to one vector and sort it, smallest to largest.
+Then do the score calculation
+

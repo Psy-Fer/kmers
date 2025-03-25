@@ -6,3 +6,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "3.0", features = ["derive", "cargo", "wrap_help"] }
 noodles = {version = "0.66.0", features = ["core", "bam", "sam", "bed", "fasta", "fastq"]}
+indicatif = {version = "*", features = ["rayon"]}
+
+[profile.release]
+debug = true
